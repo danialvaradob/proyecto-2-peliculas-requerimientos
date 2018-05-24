@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Movie {
     private String name;
     private ArrayList<Actor> actorsList = new ArrayList<>();
-    //private ArrayList<Director>
+    //private Director director;
     private int yearReleased;
     private ArrayList<String> tags = new ArrayList<>();
     private ArrayList<Comment> comments = new ArrayList<>();
