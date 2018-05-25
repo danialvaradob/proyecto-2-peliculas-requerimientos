@@ -7,10 +7,11 @@ public final class LoginAuth {
 
     private LoginAuth() {}
 
-    private boolean loginUser(String _username,String _password,boolean _regUser, SQLiteDatabase _mDb) {
+    private boolean userLogedIn(String _username,String _password,boolean _regUser, SQLiteDatabase _mDb) {
     //Code to authenticate user
     return true;
     }
     private void getUser() {}
+
 
 }
