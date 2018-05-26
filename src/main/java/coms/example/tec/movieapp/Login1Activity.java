@@ -5,11 +5,13 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.app.Activity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import java.io.IOException;
 
+import controller.RegUserController;
 import util.LoginAuth;
 
 public class Login1Activity extends Activity {
@@ -30,6 +32,15 @@ public class Login1Activity extends Activity {
         username = (EditText) findViewById(R.id.usernameTextEdit);
         password = (EditText) findViewById(R.id.passwordTextEdit);
         login = (Button) findViewById(R.id.loginBtn);
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(Login1Activity.this, RegisterUserActivity.class);
+                //myIntent.putExtra("key", value); //Optional parameters
+                Login1Activity.this.startActivity(myIntent);
+            }
+        });
 
         //DBHelper created and managed
         mDBHelper = new util.DatabaseHelper(this);
@@ -54,6 +65,8 @@ public class Login1Activity extends Activity {
         }
 
     }
+
+
 
 
 }
