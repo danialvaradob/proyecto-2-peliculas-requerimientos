@@ -1,5 +1,6 @@
 package coms.example.tec.movieapp;
 
+import android.content.Intent;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -48,7 +49,9 @@ public class Login1Activity extends Activity {
 
     }
     private void validate(String _username,String _password) {
-
+        if (true) {
+            Intent intent = new Intent(Login1Activity.this,MainActivity.class);
+        }
 
     }
 

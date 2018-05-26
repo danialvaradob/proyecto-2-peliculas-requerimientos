@@ -20,9 +20,9 @@ public class RegUserController {
         helper = _helper;
     }
 
-    public Cursor getData(int id) {
+    public Cursor getRegularUserData(int id) {
         SQLiteDatabase db =  helper.getReadableDatabase();
-        Cursor res =  db.rawQuery( "select * from contacts where id="+id+"", null );
+        Cursor res =  db.rawQuery( "select u.userName,u.password from User u where id="+id+"", null );
         return res;
     }
 
