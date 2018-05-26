@@ -14,6 +14,7 @@ public class RegularUser extends User {
     public ArrayList<Movie> getFavoriteMovies() {
         return favoriteMovies;
     }
+
     public void setFavoriteMovies(ArrayList<Movie> favoriteMovies) {
         this.favoriteMovies = favoriteMovies;
     }

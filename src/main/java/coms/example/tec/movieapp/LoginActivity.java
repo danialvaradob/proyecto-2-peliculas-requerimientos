@@ -128,7 +128,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         //DBHelper created and managed
         mDBHelper = new util.DatabaseHelper(this);
-
         try {
             mDBHelper.updateDataBase();
         } catch (IOException mIOException) {

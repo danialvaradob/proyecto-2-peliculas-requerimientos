@@ -6,7 +6,7 @@ import domain.Movie;
 public class MovieController {
     private SQLiteDatabase mDb;
     private Movie movie;
-    public static final String DATABASE_NAME = "MyDBName.db";
+    public static final String DATABASE_NAME = "DB_progra_2.db";
     public static final String MOVIES_TABLE_NAME = "Movie";
     public static final String MOVIES_COLUMN_ID = "id";
     public static final String MOVIES_COLUMN_NAME = "name";
@@ -16,6 +16,9 @@ public class MovieController {
     public static final String MOVIES_COLUMN_REVIEW = "review";
 
 
+    public MovieController(SQLiteDatabase _mDb) {
+        this.mDb = _mDb;
+    }
 
     public MovieController(Movie _movie, SQLiteDatabase _mDb) {
         this.movie = _movie;
