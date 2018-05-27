@@ -11,14 +11,12 @@ import android.widget.EditText;
 
 import java.io.IOException;
 
-import controller.RegUserController;
-import util.LoginAuth;
-
 public class Login1Activity extends Activity {
 
     private EditText username;
     private EditText password;
     private Button login;
+    private Button register;
 
 
     //database
@@ -32,12 +30,13 @@ public class Login1Activity extends Activity {
         username = (EditText) findViewById(R.id.usernameTextEdit);
         password = (EditText) findViewById(R.id.passwordTextEdit);
         login = (Button) findViewById(R.id.loginBtn);
+        register = (Button) findViewById(R.id.registerBtn);
 
-        login.setOnClickListener(new View.OnClickListener() {
+        register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent myIntent = new Intent(Login1Activity.this, RegisterUserActivity.class);
-                //myIntent.putExtra("key", value); //Optional parameters
+                //myIntent.putExtra("helper", mDBHelper); //Optional parameters
                 Login1Activity.this.startActivity(myIntent);
             }
         });

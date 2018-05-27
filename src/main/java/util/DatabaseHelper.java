@@ -10,9 +10,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Serializable;
 
-public class DatabaseHelper extends SQLiteOpenHelper {
-    private static String DB_NAME = "DB_progra_2.db";
+public class DatabaseHelper extends SQLiteOpenHelper{
+    private static String DB_NAME = "DB_progra_2";
     private static String DB_PATH = "";
     private static final int DB_VERSION = 1;
 
@@ -31,6 +32,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         copyDataBase();
 
         this.getReadableDatabase();
+        
     }
 
     public void updateDataBase() throws IOException {
@@ -94,7 +96,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        if (newVersion > oldVersion)
-            mNeedUpdate = true;
+        if(newVersion>oldVersion)
+            copyDataBase();
     }
 }
