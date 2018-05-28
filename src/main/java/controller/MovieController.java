@@ -2,9 +2,10 @@ package controller;
 
 import android.database.sqlite.SQLiteDatabase;
 import domain.Movie;
+import util.DatabaseHelper;
 
 public class MovieController {
-    private SQLiteDatabase mDb;
+    DatabaseHelper helper;
     private Movie movie;
     public static final String DATABASE_NAME = "DB_progra_2.db";
     public static final String MOVIES_TABLE_NAME = "Movie";
@@ -16,13 +17,12 @@ public class MovieController {
     public static final String MOVIES_COLUMN_REVIEW = "review";
 
 
-    public MovieController(SQLiteDatabase _mDb) {
-        this.mDb = _mDb;
+    public MovieController(DatabaseHelper _helper) {
+        helper = _helper;
     }
 
-    public MovieController(Movie _movie, SQLiteDatabase _mDb) {
+    public void setMovie(Movie _movie) {
         this.movie = _movie;
-        this.mDb = _mDb;
     }
 
     public boolean insert() {

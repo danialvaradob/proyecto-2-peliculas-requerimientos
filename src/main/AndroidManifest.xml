@@ -31,7 +31,11 @@
         </activity>
         <activity
             android:name=".RegisterUserActivity"
-            android:label="@string/title_activity_register_user"></activity>
+            android:label="@string/title_activity_register_user" />
+        <activity
+            android:name=".DisplayMovieActivity"
+            android:label="@string/title_activity_display_movie"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

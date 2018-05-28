@@ -53,16 +53,13 @@ public class RegisterUserActivity extends Activity {
         } catch (IOException mIOException) {
             throw new Error("UnableToUpdateDatabase");
         }
-
-
-
         userController = new RegUserController(DBhelper);
 
         //EVENTS
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ArrayList<String> array =  userController.getAllusernames();
+                //ArrayList<String> array =  userController.getAllusernames();
 
                 if (userController.insertContact(name.getText().toString(),lastname.getText().toString(),
                         email.getText().toString(),username.getText().toString(),
