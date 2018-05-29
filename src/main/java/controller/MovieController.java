@@ -7,7 +7,7 @@ import util.DatabaseHelper;
 public class MovieController {
     DatabaseHelper helper;
     private Movie movie;
-    public static final String DATABASE_NAME = "DB_progra_2.db";
+    public static final String DATABASE_NAME = "BD_progra_reque_2";
     public static final String MOVIES_TABLE_NAME = "Movie";
     public static final String MOVIES_COLUMN_ID = "id";
     public static final String MOVIES_COLUMN_NAME = "name";
