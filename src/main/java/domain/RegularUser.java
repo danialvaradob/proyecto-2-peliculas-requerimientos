@@ -5,10 +5,11 @@ import java.util.ArrayList;
 public class RegularUser extends User {
 
     private ArrayList<Movie> favoriteMovies = new ArrayList<>();
+    private String email;
 
-
-    public RegularUser(String username, String password, String name, String lastname) {
+    public RegularUser(String name, String lastname,String email,String username, String password) {
         super(username, password, name, lastname);
+        this.email = email;
     }
 
     public ArrayList<Movie> getFavoriteMovies() {

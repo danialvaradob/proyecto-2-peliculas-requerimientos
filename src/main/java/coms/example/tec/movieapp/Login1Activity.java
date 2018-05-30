@@ -8,8 +8,11 @@ import android.app.Activity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 
 import java.io.IOException;
+
+import domain.GlobalClass;
 
 public class Login1Activity extends Activity {
 
@@ -17,6 +20,9 @@ public class Login1Activity extends Activity {
     private EditText password;
     private Button login;
     private Button register;
+    private Switch switchAdmin;
+
+    GlobalClass global;
 
 
     //database
@@ -31,12 +37,24 @@ public class Login1Activity extends Activity {
         password = (EditText) findViewById(R.id.passwordTextEdit);
         login = (Button) findViewById(R.id.loginBtn);
         register = (Button) findViewById(R.id.registerBtn);
+        switchAdmin = (Switch) findViewById(R.id.adminSwitch);
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent myIntent = new Intent(Login1Activity.this, RegisterUserActivity.class);
                 //myIntent.putExtra("helper", mDBHelper); //Optional parameters
+                Login1Activity.this.startActivity(myIntent);
+            }
+        });
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //validate(username.getText().toString(),password.getText().toString());
+
+                Intent myIntent = new Intent(Login1Activity.this, MainActivity.class);
                 Login1Activity.this.startActivity(myIntent);
             }
         });
@@ -59,9 +77,12 @@ public class Login1Activity extends Activity {
 
     }
     private void validate(String _username,String _password) {
-        if (true) {
+        global = (GlobalClass) getApplicationContext().getApplicationContext();
+        if ((global.userLoggedIn.getUsername() == _username)&&(global.userLoggedIn.getPassword()==_password)) {
             Intent intent = new Intent(Login1Activity.this,MainActivity.class);
         }
+
+        
 
     }
 

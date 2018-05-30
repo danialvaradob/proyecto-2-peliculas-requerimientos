@@ -10,7 +10,10 @@ public class Movie {
     private int yearReleased;
     private ArrayList<String> tags = new ArrayList<>();
     private ArrayList<Comment> comments = new ArrayList<>();
+    private byte[] image;
+    private String url;
 
+    public Movie() {};
 
     public Movie(int id, String name, ArrayList<Actor> actorsList, Director director, int yearReleased, ArrayList<String> tags, ArrayList<Comment> comments) {
         this.id = id;
@@ -26,7 +29,13 @@ public class Movie {
         return id;
     }
 
+    public byte[] getImage() {
+        return image;
+    }
 
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
 
     public String getName() {
         return name;
@@ -74,5 +83,13 @@ public class Movie {
 
     public void setComments(ArrayList<Comment> comments) {
         this.comments = comments;
+    }
+
+    public String getPosterURL() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
