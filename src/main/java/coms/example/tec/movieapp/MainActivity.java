@@ -55,20 +55,34 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        global = (GlobalClass) getApplicationContext().getApplicationContext();
+
         if (!global.adminLogged) {
             Menu menu = navigationView.getMenu();
             MenuItem nav_item_editmovies = menu.findItem(R.id.nav_editmovies);
             MenuItem nav_item_blockusers = menu.findItem(R.id.nav_blockusers);
             MenuItem nav_item_managemovies = menu.findItem(R.id.nav_editmovies);
+            //usage
             nav_item_editmovies.setEnabled(false);
             nav_item_blockusers.setEnabled(false);
             nav_item_managemovies.setEnabled(false);
-            } else {
+            //visibility
+            nav_item_editmovies.setVisible(false);
+            nav_item_blockusers.setVisible(false);
+            nav_item_managemovies.setVisible(false);
+
+        } else {
             Menu menu = navigationView.getMenu();
             MenuItem nav_item_favs = menu.findItem(R.id.nav_favoritemovies);
             MenuItem nav_item_recom = menu.findItem(R.id.nav_recomendations);
+            //usage
             nav_item_favs.setEnabled(false);
             nav_item_recom.setEnabled(false);
+            //visibility
+            nav_item_favs.setVisible(false);
+            nav_item_recom.setVisible(false);
+
+
         }
 
     }
