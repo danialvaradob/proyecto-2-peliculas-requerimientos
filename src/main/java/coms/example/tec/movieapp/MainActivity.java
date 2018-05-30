@@ -17,9 +17,13 @@ import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import domain.Actor;
+import domain.Comment;
+import domain.Director;
 import domain.GlobalClass;
 import domain.Movie;
 import util.DownloadImageTask;
@@ -84,6 +88,27 @@ public class MainActivity extends AppCompatActivity
 
 
         }
+
+        //Actors
+        Actor a1 = new Actor("Josh","Brollin");
+        Actor a2 = new Actor("Scarlett","Johansson");
+
+        ArrayList<Actor> actorsList = new ArrayList<>();
+        actorsList.add(a1);
+        actorsList.add(a2);
+
+        Director director = new Director("Joe","Russo");
+
+        //Movie, just to show it on the table
+        //url movie 1 https://ibb.co/dY7CTJ
+        ArrayList<Movie> movieList = new ArrayList<>();
+        ArrayList<Comment> comments = new ArrayList<>();
+
+        //int id, String name, ArrayList<Actor> actorsList,
+        // Director director, int yearReleased,ArrayList<Comment> comments
+        Movie m1 = new Movie(1,"Avengers: Infinity War",actorsList,director,2018,
+                comments);
+        movieList.add(m1);
 
     }
 

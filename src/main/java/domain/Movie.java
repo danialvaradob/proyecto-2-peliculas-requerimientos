@@ -15,6 +15,15 @@ public class Movie {
 
     public Movie() {};
 
+    public Movie(int id, String name, ArrayList<Actor> actorsList, Director director, int yearReleased,ArrayList<Comment> comments) {
+        this.id = id;
+        this.name = name;
+        this.actorsList = actorsList;
+        this.director = director;
+        this.yearReleased = yearReleased;
+        this.comments = comments;
+    }
+
     public Movie(int id, String name, ArrayList<Actor> actorsList, Director director, int yearReleased, ArrayList<String> tags, ArrayList<Comment> comments) {
         this.id = id;
         this.name = name;
