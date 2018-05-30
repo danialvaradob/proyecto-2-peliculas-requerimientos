@@ -82,7 +82,7 @@ public class Login1Activity extends Activity {
             Intent intent = new Intent(Login1Activity.this,MainActivity.class);
         }
 
-        
+
 
     }
 

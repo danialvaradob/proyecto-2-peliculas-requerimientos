@@ -59,11 +59,17 @@ public class MainActivity extends AppCompatActivity
             Menu menu = navigationView.getMenu();
             MenuItem nav_item_editmovies = menu.findItem(R.id.nav_editmovies);
             MenuItem nav_item_blockusers = menu.findItem(R.id.nav_blockusers);
-            MenuItem nav_item_managemovies = menu.findItem(R.id.nav_manage);
+            MenuItem nav_item_managemovies = menu.findItem(R.id.nav_editmovies);
             nav_item_editmovies.setEnabled(false);
             nav_item_blockusers.setEnabled(false);
             nav_item_managemovies.setEnabled(false);
-            }
+            } else {
+            Menu menu = navigationView.getMenu();
+            MenuItem nav_item_favs = menu.findItem(R.id.nav_favoritemovies);
+            MenuItem nav_item_recom = menu.findItem(R.id.nav_recomendations);
+            nav_item_favs.setEnabled(false);
+            nav_item_recom.setEnabled(false);
+        }
 
     }
 
@@ -109,8 +115,6 @@ public class MainActivity extends AppCompatActivity
             Intent myIntent = new Intent(MainActivity.this, MainActivity.class);
             MainActivity.this.startActivity(myIntent);
         } else if (id == R.id.nav_blockusers) {
-
-        } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_editmovies) {
 

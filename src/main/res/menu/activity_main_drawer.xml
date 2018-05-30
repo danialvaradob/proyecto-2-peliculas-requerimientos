@@ -6,24 +6,25 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_startscren"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_menu_gallery"
             android:title="Todas las películas" />
+
+        <item
+            android:id="@+id/nav_favoritemovies"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Películas Favoritas" />
+        <item
+            android:id="@+id/nav_recomendations"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Películas Recomendadas" />
         <item
             android:id="@+id/nav_blockusers"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_menu_manage"
             android:title="Bloquear Usuarios" />
         <item
             android:id="@+id/nav_editmovies"
             android:icon="@drawable/ic_menu_manage"
             android:title="Administrar Películas" />
-        <item
-            android:id="@+id/nav_favoritemovies"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
-        <item
-            android:id="@+id/nav_recomendations"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
 
     </group>
 
