@@ -8,4 +8,5 @@ public class GlobalClass extends Application {
     public RegularUser userLoggedIn;
     public boolean adminLogged = false;
     public ArrayList<Movie> moviesInApp = new ArrayList<>();
+    public Movie currentMovie;
 }

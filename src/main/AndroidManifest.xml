@@ -8,13 +8,13 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
+        android:name="domain.GlobalClass"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:name="domain.GlobalClass">
+        android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
@@ -36,6 +36,10 @@
         <activity
             android:name=".DisplayMovieActivity"
             android:label="@string/title_activity_display_movie"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".FavMoviesActivity"
+            android:label="@string/title_activity_fav_movies"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

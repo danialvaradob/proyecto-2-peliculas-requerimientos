@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private GlobalClass global;
+    private ArrayList<Movie> movies  = new ArrayList<>();
 
 
     @Override
@@ -106,9 +107,13 @@ public class MainActivity extends AppCompatActivity
 
         //int id, String name, ArrayList<Actor> actorsList,
         // Director director, int yearReleased,ArrayList<Comment> comments
-        Movie m1 = new Movie(1,"Avengers: Infinity War",actorsList,director,2018,
+        Movie m1 = new Movie(2,"Avengers: Infinity War",actorsList,director,2018,
                 comments);
+        m1.setUrl("https://ibb.co/dY7CTJ");
         movieList.add(m1);
+        //global.moviesInApp = movieList;
+
+        this.populateTable();
 
     }
 
@@ -151,13 +156,15 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_startscren) {
-            Intent myIntent = new Intent(MainActivity.this, MainActivity.class);
-            MainActivity.this.startActivity(myIntent);
+            //Intent myIntent = new Intent(MainActivity.this, MainActivity.class);
+            //MainActivity.this.startActivity(myIntent);
         } else if (id == R.id.nav_blockusers) {
 
         } else if (id == R.id.nav_editmovies) {
 
         } else if (id == R.id.nav_favoritemovies) {
+            Intent myIntent = new Intent(MainActivity.this, FavMoviesActivity.class);
+            MainActivity.this.startActivity(myIntent);
 
         } else if (id == R.id.nav_recomendations) {
 
@@ -170,14 +177,14 @@ public class MainActivity extends AppCompatActivity
     private void populateTable(){
         TableLayout moviesTbl = findViewById(R.id.movieTableLayout);
         TableRow newRow = new TableRow(this);
-        List<Movie> movies;
-        movies = global.moviesInApp;
-        Collections.reverse(movies);
+        //List<Movie> movies;
+        //movies = global.moviesInApp;
+        Collections.reverse(this.movies);
 
         int i = 0;
         ImageView new_element1 = null;
-        while (i<movies.size()){
-            new_element1 = setNewView(movies, i);
+        while (i<this.movies.size()){
+            new_element1 = setNewView(this.movies, i);
             i++;
 
             moviesTbl.addView(new_element1);
