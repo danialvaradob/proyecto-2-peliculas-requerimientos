@@ -9,4 +9,7 @@ public class GlobalClass extends Application {
     public boolean adminLogged = false;
     public ArrayList<Movie> moviesInApp = new ArrayList<>();
     public Movie currentMovie;
+    public ArrayList<RegularUser> users = new ArrayList<>();
+
+
 }

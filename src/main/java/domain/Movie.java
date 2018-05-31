@@ -12,19 +12,22 @@ public class Movie {
     private ArrayList<Comment> comments = new ArrayList<>();
     private byte[] image;
     private String url;
+    private Genre genre;
+    private String summary;
 
     public Movie() {};
 
-    public Movie(int id, String name, ArrayList<Actor> actorsList, Director director, int yearReleased,ArrayList<Comment> comments) {
+    public Movie(int id, String name, ArrayList<Actor> actorsList, Director director, Genre genre,int yearReleased,ArrayList<Comment> comments) {
         this.id = id;
         this.name = name;
         this.actorsList = actorsList;
         this.director = director;
         this.yearReleased = yearReleased;
         this.comments = comments;
+        this.genre = genre;
     }
 
-    public Movie(int id, String name, ArrayList<Actor> actorsList, Director director, int yearReleased, ArrayList<String> tags, ArrayList<Comment> comments) {
+    public Movie(int id, String name, ArrayList<Actor> actorsList, Director director, Genre genre, int yearReleased, ArrayList<String> tags, ArrayList<Comment> comments) {
         this.id = id;
         this.name = name;
         this.actorsList = actorsList;
@@ -32,6 +35,7 @@ public class Movie {
         this.yearReleased = yearReleased;
         this.tags = tags;
         this.comments = comments;
+        this.genre = genre;
     }
 
     public int getId() {
@@ -100,5 +104,21 @@ public class Movie {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
     }
 }

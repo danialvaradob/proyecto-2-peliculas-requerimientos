@@ -80,6 +80,7 @@ public class Login1Activity extends Activity {
         global = (GlobalClass) getApplicationContext().getApplicationContext();
         if ((global.userLoggedIn.getUsername() == _username)&&(global.userLoggedIn.getPassword()==_password)) {
             Intent intent = new Intent(Login1Activity.this,MainActivity.class);
+            Login1Activity.this.startActivity(intent);
         }
 
 

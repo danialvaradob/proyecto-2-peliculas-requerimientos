@@ -24,15 +24,17 @@ import java.util.List;
 import domain.Actor;
 import domain.Comment;
 import domain.Director;
+import domain.Genre;
 import domain.GlobalClass;
 import domain.Movie;
 import util.DownloadImageTask;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener {
 
     private GlobalClass global;
     private ArrayList<Movie> movies  = new ArrayList<>();
+    private TableLayout table;
 
 
     @Override
@@ -61,6 +63,8 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         global = (GlobalClass) getApplicationContext().getApplicationContext();
+
+        this.table = findViewById(R.id.movieTableLayout);
 
         if (!global.adminLogged) {
             Menu menu = navigationView.getMenu();
@@ -99,6 +103,7 @@ public class MainActivity extends AppCompatActivity
         actorsList.add(a2);
 
         Director director = new Director("Joe","Russo");
+        Genre genre = new Genre("Action");
 
         //Movie, just to show it on the table
         //url movie 1 https://ibb.co/dY7CTJ
@@ -107,13 +112,19 @@ public class MainActivity extends AppCompatActivity
 
         //int id, String name, ArrayList<Actor> actorsList,
         // Director director, int yearReleased,ArrayList<Comment> comments
-        Movie m1 = new Movie(2,"Avengers: Infinity War",actorsList,director,2018,
+        Movie m1 = new Movie(2,"Avengers: Infinity War",actorsList,director,genre,2018,
                 comments);
         m1.setUrl("https://ibb.co/dY7CTJ");
+        m1.setSummary("Pelicula de accion basada en lso Comics de Marvel");
         movieList.add(m1);
-        //global.moviesInApp = movieList;
 
+
+        //global.moviesInApp = movieList;
+        //this.movies = global.moviesInApp;
+
+        this.movies =  movieList;
         this.populateTable();
+        global.currentMovie = m1;
 
     }
 
@@ -175,7 +186,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
     private void populateTable(){
-        TableLayout moviesTbl = findViewById(R.id.movieTableLayout);
+
         TableRow newRow = new TableRow(this);
         //List<Movie> movies;
         //movies = global.moviesInApp;
@@ -184,13 +195,16 @@ public class MainActivity extends AppCompatActivity
         int i = 0;
         ImageView new_element1 = null;
         while (i<this.movies.size()){
+            System.out.print("NOMBRE   "+this.movies.get(i).getName());
             new_element1 = setNewView(this.movies, i);
             i++;
 
-            moviesTbl.addView(new_element1);
+            this.table.addView(new_element1);
 
         }
     }
+
+
     private ImageView setNewView(List<Movie> movies, int i){
         Movie m = movies.get(i);
         ImageView new_element = new ImageView(this);
@@ -206,4 +220,8 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    @Override
+    public void onClick(View view) {
+
+    }
 }
