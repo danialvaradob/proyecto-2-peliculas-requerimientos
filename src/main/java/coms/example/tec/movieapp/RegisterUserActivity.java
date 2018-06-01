@@ -71,7 +71,8 @@ public class RegisterUserActivity extends Activity {
                  RegularUser u = new RegularUser(name.getText().toString(),lastname.getText().toString(),
                         email.getText().toString(),username.getText().toString(),
                          password.getText().toString());
-                    global.userLoggedIn = u;
+                    //global.userLoggedIn = u;
+                    global.users.add(u);
 
             }
         });

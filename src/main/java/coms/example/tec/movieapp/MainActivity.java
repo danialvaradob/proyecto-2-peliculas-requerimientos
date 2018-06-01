@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity
         //int id, String name, ArrayList<Actor> actorsList,
         // Director director, int yearReleased,ArrayList<Comment> comments
         Movie m1 = new Movie(2,"Avengers: Infinity War",actorsList,director,genre,2018,
-                comments);
+                comments,"https://ibb.co/dY7CTJ","Pelicula de accion basada en lso Comics de Marvel");
         m1.setUrl("https://ibb.co/dY7CTJ");
         m1.setSummary("Pelicula de accion basada en lso Comics de Marvel");
         movieList.add(m1);
@@ -124,6 +124,9 @@ public class MainActivity extends AppCompatActivity
 
         this.movies =  movieList;
         this.populateTable();
+
+        //cambiar esto, para que cuando seleccione la pelicula, la seleccionada tome el ID y obtenga la pelicula que es
+        //y cambie el currentMovie
         global.currentMovie = m1;
 
     }
@@ -168,7 +171,9 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_startscren) {
             //Intent myIntent = new Intent(MainActivity.this, MainActivity.class);
-            //MainActivity.this.startActivity(myIntent);
+            //MainActivity.this.startActivity(myIntent);\
+            Intent myIntent = new Intent(MainActivity.this, DisplayMovieActivity.class);
+            MainActivity.this.startActivity(myIntent);
         } else if (id == R.id.nav_blockusers) {
 
         } else if (id == R.id.nav_editmovies) {

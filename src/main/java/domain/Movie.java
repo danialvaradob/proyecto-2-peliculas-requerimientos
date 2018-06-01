@@ -17,7 +17,21 @@ public class Movie {
 
     public Movie() {};
 
-    public Movie(int id, String name, ArrayList<Actor> actorsList, Director director, Genre genre,int yearReleased,ArrayList<Comment> comments) {
+
+    public Movie( String name, ArrayList<Actor> actorsList, Director director, Genre genre,int yearReleased, String summary) {
+        this.name = name;
+        this.actorsList = actorsList;
+        this.director = director;
+        this.yearReleased = yearReleased;
+        this.comments = comments;
+        this.genre = genre;
+        this.url = url;
+        this.summary = summary;
+    }
+
+
+
+    public Movie(int id, String name, ArrayList<Actor> actorsList, Director director, Genre genre,int yearReleased,ArrayList<Comment> comments, String url, String summary) {
         this.id = id;
         this.name = name;
         this.actorsList = actorsList;
@@ -25,9 +39,11 @@ public class Movie {
         this.yearReleased = yearReleased;
         this.comments = comments;
         this.genre = genre;
+        this.url = url;
+        this.summary = summary;
     }
 
-    public Movie(int id, String name, ArrayList<Actor> actorsList, Director director, Genre genre, int yearReleased, ArrayList<String> tags, ArrayList<Comment> comments) {
+    public Movie(int id, String name, ArrayList<Actor> actorsList, Director director, Genre genre, int yearReleased, ArrayList<String> tags, ArrayList<Comment> comments, String url, String summary) {
         this.id = id;
         this.name = name;
         this.actorsList = actorsList;
@@ -36,6 +52,8 @@ public class Movie {
         this.tags = tags;
         this.comments = comments;
         this.genre = genre;
+        this.url = url;
+        this.summary = summary;
     }
 
     public int getId() {

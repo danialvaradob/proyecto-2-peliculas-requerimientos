@@ -11,8 +11,10 @@ import android.widget.EditText;
 import android.widget.Switch;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import domain.GlobalClass;
+import domain.RegularUser;
 
 public class Login1Activity extends Activity {
 
@@ -56,6 +58,8 @@ public class Login1Activity extends Activity {
 
                 Intent myIntent = new Intent(Login1Activity.this, MainActivity.class);
                 Login1Activity.this.startActivity(myIntent);
+
+
             }
         });
 
@@ -77,14 +81,31 @@ public class Login1Activity extends Activity {
 
     }
     private void validate(String _username,String _password) {
+        /*
         global = (GlobalClass) getApplicationContext().getApplicationContext();
         if ((global.userLoggedIn.getUsername() == _username)&&(global.userLoggedIn.getPassword()==_password)) {
             Intent intent = new Intent(Login1Activity.this,MainActivity.class);
             Login1Activity.this.startActivity(intent);
         }
+         */
+        if (searchUser(_username,_password)) {
+            Intent intent = new Intent(Login1Activity.this,MainActivity.class);
+            Login1Activity.this.startActivity(intent);
+        }
 
 
+    }
 
+    private boolean searchUser(String _username,String _password) {
+        ArrayList<RegularUser> users = global.users;
+        for (int i = 0; i < users.size();i++) {
+            RegularUser user = users.get(i);
+            if (user.getUsername().equals(_username) && user.getPassword().equals(_password)) {
+                global.userLoggedIn = user;
+                return true;
+            }
+        }
+        return false;
     }
 
 

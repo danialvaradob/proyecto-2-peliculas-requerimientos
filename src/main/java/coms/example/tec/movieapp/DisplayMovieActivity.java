@@ -49,7 +49,7 @@ public class DisplayMovieActivity extends AppCompatActivity {
         });
 
         global = (GlobalClass) getApplicationContext().getApplicationContext();
-        
+
         //load the movie
         movieDisplayed = global.currentMovie;
 
@@ -76,6 +76,16 @@ public class DisplayMovieActivity extends AppCompatActivity {
         director.setText(this.movieDisplayed.getDirector().toString());
         genre.setText(this.movieDisplayed.getGenre().getName());
         summary.setText(this.movieDisplayed.getSummary());
+
+    }
+
+    private void setImage(View view) {
+        ImageView new_element = new ImageView(this);
+        new_element.setId(this.movieDisplayed.getId());
+
+        new DownloadImageTask(new_element)
+                .execute(this.movieDisplayed.getPosterURL());
+        new_element.setTag(this.movieDisplayed.getId());
 
     }
 
