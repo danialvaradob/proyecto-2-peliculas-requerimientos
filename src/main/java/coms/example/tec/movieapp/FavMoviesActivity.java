@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 
 import java.util.Collections;
 import java.util.List;
@@ -50,9 +51,9 @@ public class FavMoviesActivity extends AppCompatActivity {
         Collections.reverse(movies);
 
         int i = 0;
-        ImageView new_element1 = null;
+        TextView new_element1 = null;
         while (i<movies.size()){
-            new_element1 = setNewView(movies, i);
+            new_element1 = setNewTextView(movies, i);
             i++;
 
             moviesTbl.addView(new_element1);
@@ -68,6 +69,18 @@ public class FavMoviesActivity extends AppCompatActivity {
                 .execute(m.getPosterURL());
         new_element.setTag(m.getId());
 
+        new_element.setOnClickListener((View.OnClickListener) this);
+        new_element.setLayoutParams(new TableRow.LayoutParams(300, 400));
+        return new_element;
+    }
+
+    private TextView setNewTextView(List<Movie> movies, int i){
+        Movie m = movies.get(i);
+        TextView new_element = new TextView(this);
+        new_element.setId(m.getId());
+
+        new_element.setTag(m.getId());
+        new_element.setText("Nombre: "+m.getName());
         new_element.setOnClickListener((View.OnClickListener) this);
         new_element.setLayoutParams(new TableRow.LayoutParams(300, 400));
         return new_element;

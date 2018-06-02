@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -198,10 +199,10 @@ public class MainActivity extends AppCompatActivity
         Collections.reverse(this.movies);
 
         int i = 0;
-        ImageView new_element1 = null;
+        TextView new_element1 = null;
         while (i<this.movies.size()){
             System.out.print("NOMBRE   "+this.movies.get(i).getName());
-            new_element1 = setNewView(this.movies, i);
+            new_element1 = setNewTextView(this.movies, i);
             i++;
 
             this.table.addView(new_element1);
@@ -209,6 +210,17 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    private TextView setNewTextView(List<Movie> movies, int i){
+        Movie m = movies.get(i);
+        TextView new_element = new TextView(this);
+        new_element.setId(m.getId());
+
+        new_element.setTag(m.getId());
+        new_element.setText("Nombre: "+m.getName());
+        new_element.setOnClickListener((View.OnClickListener) this);
+        new_element.setLayoutParams(new TableRow.LayoutParams(300, 400));
+        return new_element;
+    }
 
     private ImageView setNewView(List<Movie> movies, int i){
         Movie m = movies.get(i);
@@ -224,9 +236,40 @@ public class MainActivity extends AppCompatActivity
         return new_element;
     }
 
-
     @Override
     public void onClick(View view) {
+        Intent detail_screen = new Intent(this, DisplayMovieActivity.class);
+        System.out.println(String.valueOf(view.getId()));
+        //System.out.println(R.id.main_imgReco1);
+        int MovieId = (int)findViewById(view.getId()).getTag();
+        //System.out.println("TAG " + MovieId);
 
+        //set Movie
+        this.setMovie(MovieId);
+
+        detail_screen.putExtra("MovieId", String.valueOf(MovieId));
+        startActivity(detail_screen);
     }
+
+    private void setMovie(int _id) {
+        ArrayList<Movie> movies = global.moviesInApp;
+        Movie m = null;
+        for (int i = 0; i < movies.size();i++) {
+            m = movies.get(i);
+            if (_id == m.getId()) {
+                global.currentMovie = m;
+                break;
+            }
+        }
+    }
+
+
+
+
+    private void searchMovie(String _criteria) {
+        ArrayList<Movie> moviesFound = new ArrayList<>();
+        //for (int i = 0;i < )
+    }
+
+
 }

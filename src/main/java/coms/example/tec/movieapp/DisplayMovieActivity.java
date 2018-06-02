@@ -1,12 +1,17 @@
 package coms.example.tec.movieapp;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -27,6 +32,7 @@ public class DisplayMovieActivity extends AppCompatActivity {
     private TextView genre;
     private TextView name;
     private TextView summary;
+    private ImageButton favoriteMovie;
 
 
     private GlobalClass global;
@@ -59,6 +65,7 @@ public class DisplayMovieActivity extends AppCompatActivity {
         genre = (TextView) findViewById(R.id.genreTextView);
         name = (TextView) findViewById(R.id.movieNameTextView);
         summary = (TextView) findViewById(R.id.summaryTextView4);
+        favoriteMovie = (ImageButton) findViewById(R.id.favoriteBtn);
 
         actors.setMovementMethod(new ScrollingMovementMethod());
         summary.setMovementMethod(new ScrollingMovementMethod());
@@ -66,6 +73,30 @@ public class DisplayMovieActivity extends AppCompatActivity {
 
         this.loadContent();
 
+
+
+
+        favoriteMovie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //add a movie to the favorites.
+                global.userLoggedIn.addMovie(movieDisplayed);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(DisplayMovieActivity.this);
+                // Setting Alert Dialog Title
+                alertDialogBuilder.setTitle("Confirm Exit..!!!");
+                // Icon Of Alert Dialog
+                alertDialogBuilder.setIcon(R.drawable.ic_menu_send);
+                // Setting Alert Dialog Message
+                alertDialogBuilder.setMessage("Movie added to favorites");
+                alertDialogBuilder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        finish();
+                    }
+                });
+            }
+        });
 
 
     }

@@ -1,11 +1,13 @@
 package coms.example.tec.movieapp;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.SQLException;
 import android.os.Bundle;
 import android.app.Activity;
 import android.provider.ContactsContract;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -73,6 +75,20 @@ public class RegisterUserActivity extends Activity {
                          password.getText().toString());
                     //global.userLoggedIn = u;
                     global.users.add(u);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(RegisterUserActivity.this);
+                // Setting Alert Dialog Title
+                alertDialogBuilder.setTitle("Confirm Exit..!!!");
+                // Icon Of Alert Dialog
+                alertDialogBuilder.setIcon(R.drawable.ic_menu_send);
+                // Setting Alert Dialog Message
+                alertDialogBuilder.setMessage("Usuario agregado");
+                alertDialogBuilder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        finish();
+                    }
+                });
 
             }
         });
