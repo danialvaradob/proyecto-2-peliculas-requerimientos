@@ -24,9 +24,15 @@ public class FileHelper {
 
     private  GlobalClass global;
 
-    public static void saveMovies(ArrayList<Movie> _movies) {
+
+
+    public FileHelper() {};
+
+    public void saveMovies(ArrayList<Movie> _movies) {
         try {
-            FileOutputStream f = new FileOutputStream(new File(PATH + "/" + MOVIES_FILE_NAME));
+            File file = new File(PATH + "/" + MOVIES_FILE_NAME);
+            file.mkdir();
+            FileOutputStream f = new FileOutputStream(file);
             ObjectOutputStream o = new ObjectOutputStream(f);
 
             o.writeObject(_movies);

@@ -273,7 +273,7 @@ public class MainActivity extends AppCompatActivity
             for (int i = 0;i <allMovies.size();i++) {
                 m = allMovies.get(i);
                 ArrayList<String> strings = new ArrayList<>();
-
+                strings.add(m.getName());
                 strings.add(m.getDirector().toString().toLowerCase());
                 ArrayList<Actor> actors = m.getActorsList();
                 for (int j = 0; j < actors.size();j++) {

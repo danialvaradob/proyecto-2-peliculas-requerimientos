@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -153,7 +154,10 @@ public class LoginActivity extends Activity {
 
         Admin a  = new Admin("admin1", "1234","Daniel", "Al");
 
-        FileHelper.saveMovies(movieList);
+
+        FileHelper fh = new FileHelper();
+        //fh.saveMovies(movieList);
+
 
         global.moviesInApp = movieList;
         ////////////////////////////////////////////////////////////////
