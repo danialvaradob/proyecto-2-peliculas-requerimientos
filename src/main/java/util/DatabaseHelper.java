@@ -13,7 +13,7 @@ import java.io.OutputStream;
 import java.io.Serializable;
 
 public class DatabaseHelper extends SQLiteOpenHelper{
-    private static String DB_NAME = "DB_progra_2";
+    private static String DB_NAME = "BD_progra.db";
     private static String DB_PATH = "";
     private static final int DB_VERSION = 1;
 

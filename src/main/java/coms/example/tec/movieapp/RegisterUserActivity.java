@@ -66,7 +66,7 @@ public class RegisterUserActivity extends Activity {
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //ArrayList<String> array =  userController.getAllusernames();
+
 
                 //insertConctactDB();
                  global = (GlobalClass) getApplicationContext().getApplicationContext();
@@ -74,14 +74,15 @@ public class RegisterUserActivity extends Activity {
                         email.getText().toString(),username.getText().toString(),
                          password.getText().toString());
                     //global.userLoggedIn = u;
-                    global.users.add(u);
+
+                global.users.add(u);
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(RegisterUserActivity.this);
                 // Setting Alert Dialog Title
-                alertDialogBuilder.setTitle("Confirm Exit..!!!");
+                alertDialogBuilder.setTitle("Message");
                 // Icon Of Alert Dialog
                 alertDialogBuilder.setIcon(R.drawable.ic_menu_send);
                 // Setting Alert Dialog Message
-                alertDialogBuilder.setMessage("Usuario agregado");
+                alertDialogBuilder.setMessage("REGISTRAD@!");
                 alertDialogBuilder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
 
                     @Override
@@ -89,6 +90,12 @@ public class RegisterUserActivity extends Activity {
                         finish();
                     }
                 });
+                alertDialogBuilder.show();
+
+
+
+
+
 
             }
         });

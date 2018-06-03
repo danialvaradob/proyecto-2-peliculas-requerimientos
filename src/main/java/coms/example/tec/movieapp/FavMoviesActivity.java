@@ -18,7 +18,7 @@ import domain.GlobalClass;
 import domain.Movie;
 import util.DownloadImageTask;
 
-public class FavMoviesActivity extends AppCompatActivity {
+public class FavMoviesActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     private GlobalClass global;
@@ -89,4 +89,8 @@ public class FavMoviesActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View view) {
+
+    }
 }

@@ -23,6 +23,7 @@ import domain.Genre;
 import domain.GlobalClass;
 import domain.Movie;
 import domain.RegularUser;
+import util.FileHelper;
 
 public class LoginActivity extends Activity {
 
@@ -73,7 +74,11 @@ public class LoginActivity extends Activity {
             }
         });
 
+        //Sets the global class. If this is not used in the Activity the app will crash when
+        //using global attributes
         global = (GlobalClass) getApplicationContext().getApplicationContext();
+
+
 
         //DBHelper created and managed
         mDBHelper = new util.DatabaseHelper(this);
@@ -93,9 +98,14 @@ public class LoginActivity extends Activity {
         ////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////
-//Actors
+
+        //user1
+        RegularUser u1 = new RegularUser("User 1","lastname", "email","username", "pass");
+        global.users.add(u1);
+        //Actors
         Actor a1 = new Actor("Josh","Brollin");
         Actor a2 = new Actor("Scarlett","Johansson");
+
 
         ArrayList<Actor> actorsList = new ArrayList<>();
         actorsList.add(a1);
@@ -112,12 +122,38 @@ public class LoginActivity extends Activity {
         //int id, String name, ArrayList<Actor> actorsList,
         // Director director, int yearReleased,ArrayList<Comment> comments
         Movie m1 = new Movie(2,"Avengers: Infinity War",actorsList,director,genre,2018,
-                comments,"https://ibb.co/dY7CTJ","Pelicula de accion basada en lso Comics de Marvel");
-        m1.setUrl("https://ibb.co/dY7CTJ");
-        m1.setSummary("Pelicula de accion basada en lso Comics de Marvel");
+                comments,"https://image.ibb.co/ck6jay/Avengers_Infinity_War_poster.jpg","Pelicula de accion basada en lso Comics de Marvel");
         movieList.add(m1);
+        //------------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------------------------------------
+
+        Actor a3 = new Actor("Ryan","Gosling");
+        Actor a4 = new Actor("Rachel","McAdams");
+
+
+        ArrayList<Actor> actorsList2 = new ArrayList<>();
+        actorsList.add(a3);
+        actorsList.add(a4);
+
+        Director director2 = new Director("Nick","Cassavetes");
+        Genre genre2 = new Genre("Drama");
+
+        //int id, String name, ArrayList<Actor> actorsList,
+        // Director director, int yearReleased,ArrayList<Comment> comments
+        Movie m2 = new Movie(3,"The Notebook",actorsList2,director2,genre2,2004,
+                comments,"https://image.ibb.co/ewjtay/MV5_BMTk3_OTM5_Njg5_M15_BMl5_Ban_Bn_Xk_Ft_ZTYw_Mz_A0_ODI3_V1_UX182_CR0_0_182_268_AL.jpg",
+                "Pelicula de romantica");
+        movieList.add(m2);
+
+
+
 
         Admin a  = new Admin("admin1", "1234","Daniel", "Al");
+
+        FileHelper.saveMovies(movieList);
 
         global.moviesInApp = movieList;
         ////////////////////////////////////////////////////////////////
@@ -167,7 +203,7 @@ public class LoginActivity extends Activity {
             // Icon Of Alert Dialog
             //alertDialogBuilder.setIcon(R.drawable.ic_menu_send);
             // Setting Alert Dialog Message
-            alertDialogBuilder.setMessage("Login Successful!");
+            alertDialogBuilder.setMessage("BIENVENID@" + " " + global.userLoggedIn.toString());
             alertDialogBuilder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
 
                 @Override
@@ -214,6 +250,7 @@ public class LoginActivity extends Activity {
                 global.userLoggedIn = user;
                 return true;
             }
+
         }
         return false;
     }

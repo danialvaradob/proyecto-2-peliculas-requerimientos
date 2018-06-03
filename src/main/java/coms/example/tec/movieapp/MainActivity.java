@@ -13,12 +13,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -36,6 +39,8 @@ public class MainActivity extends AppCompatActivity
     private GlobalClass global;
     private ArrayList<Movie> movies  = new ArrayList<>();
     private TableLayout table;
+    private Button search;
+    private EditText criteriaText;
 
 
     @Override
@@ -65,7 +70,20 @@ public class MainActivity extends AppCompatActivity
 
         global = (GlobalClass) getApplicationContext().getApplicationContext();
 
+        //setting attributes
         this.table = findViewById(R.id.movieTableLayout);
+        this.search = findViewById(R.id.searchButton);
+        this.criteriaText = findViewById(R.id.searchCriteriaTextEdit);
+
+
+        this.search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                searchMovie(criteriaText.getText().toString());
+            }
+        });
+
+
 
         if (!global.adminLogged) {
             Menu menu = navigationView.getMenu();
@@ -99,7 +117,7 @@ public class MainActivity extends AppCompatActivity
         this.movies = global.moviesInApp;
 
         //this.movies =  movieList;
-        this.populateTable();
+        this.populateTable(this.movies);
 
         //cambiar esto, para que cuando seleccione la pelicula, la seleccionada tome el ID y obtenga la pelicula que es
         //y cambie el currentMovie
@@ -166,18 +184,21 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    private void populateTable(){
+    private void populateTable(ArrayList<Movie> _movies){
+        //clean table
+        this.table.removeAllViews();
+
 
         TableRow newRow = new TableRow(this);
         //List<Movie> movies;
         //movies = global.moviesInApp;
-        Collections.reverse(this.movies);
+        Collections.reverse(_movies);
 
         int i = 0;
         TextView new_element1 = null;
-        while (i<this.movies.size()){
-            System.out.print("NOMBRE   "+this.movies.get(i).getName());
-            new_element1 = setNewTextView(this.movies, i);
+        while (i<_movies.size()){
+            System.out.print("NOMBRE   "+_movies.get(i).getName());
+            new_element1 = setNewTextView(_movies, i);
             i++;
 
             this.table.addView(new_element1);
@@ -244,9 +265,38 @@ public class MainActivity extends AppCompatActivity
 
 
     private void searchMovie(String _criteria) {
-        ArrayList<Movie> moviesFound = new ArrayList<>();
-        //for (int i = 0;i < )
+        if (!_criteria.equals("")) {
+            ArrayList<Movie> moviesFound = new ArrayList<>();
+            ArrayList<Movie> allMovies = global.moviesInApp;
+
+            Movie m = null;
+            for (int i = 0;i <allMovies.size();i++) {
+                m = allMovies.get(i);
+                ArrayList<String> strings = new ArrayList<>();
+
+                strings.add(m.getDirector().toString().toLowerCase());
+                ArrayList<Actor> actors = m.getActorsList();
+                for (int j = 0; j < actors.size();j++) {
+                    strings.add(actors.get(j).toString().toLowerCase());
+                }
+                strings.add(m.getGenre().getName().toLowerCase());
+
+                for (int j = 0; j < strings.size(); j++) {
+                    Boolean found = Arrays.asList(strings.get(i).split(" ")).contains(_criteria.toLowerCase().trim());
+                    if(found){
+                        moviesFound.add(m);
+                    }
+                }
+            }
+            populateTable(moviesFound);
+
+        } else {
+            populateTable(global.moviesInApp);
+        }
+
+
     }
+
 
 
 }

@@ -28,4 +28,8 @@ public class RegularUser extends User {
         return false;
     }
 
+    @Override
+    public String toString() {
+        return super.getName() + " " + super.getLastname();
+    }
 }

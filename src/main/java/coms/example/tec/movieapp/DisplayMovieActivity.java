@@ -83,18 +83,19 @@ public class DisplayMovieActivity extends AppCompatActivity {
                 global.userLoggedIn.addMovie(movieDisplayed);
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(DisplayMovieActivity.this);
                 // Setting Alert Dialog Title
-                alertDialogBuilder.setTitle("Confirm Exit..!!!");
+                alertDialogBuilder.setTitle("FAVORITA");
                 // Icon Of Alert Dialog
-                alertDialogBuilder.setIcon(R.drawable.ic_menu_send);
+                //alertDialogBuilder.setIcon(R.drawable.ic_menu_send);
                 // Setting Alert Dialog Message
-                alertDialogBuilder.setMessage("Movie added to favorites");
+                alertDialogBuilder.setMessage("Pelicula agregada a favoritas");
                 alertDialogBuilder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
-                        finish();
+                        arg0.dismiss();
                     }
                 });
+                alertDialogBuilder.show();
             }
         });
 
