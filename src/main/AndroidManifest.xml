@@ -41,6 +41,10 @@
         <activity
             android:name=".FavMoviesActivity"
             android:label="@string/title_activity_fav_movies"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AddMovieActivity"
+            android:label="@string/title_activity_add_movie"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

@@ -95,40 +95,15 @@ public class MainActivity extends AppCompatActivity
 
         }
 
-        //Actors
-        Actor a1 = new Actor("Josh","Brollin");
-        Actor a2 = new Actor("Scarlett","Johansson");
 
-        ArrayList<Actor> actorsList = new ArrayList<>();
-        actorsList.add(a1);
-        actorsList.add(a2);
+        this.movies = global.moviesInApp;
 
-        Director director = new Director("Joe","Russo");
-        Genre genre = new Genre("Action");
-
-        //Movie, just to show it on the table
-        //url movie 1 https://ibb.co/dY7CTJ
-        ArrayList<Movie> movieList = new ArrayList<>();
-        ArrayList<Comment> comments = new ArrayList<>();
-
-        //int id, String name, ArrayList<Actor> actorsList,
-        // Director director, int yearReleased,ArrayList<Comment> comments
-        Movie m1 = new Movie(2,"Avengers: Infinity War",actorsList,director,genre,2018,
-                comments,"https://ibb.co/dY7CTJ","Pelicula de accion basada en lso Comics de Marvel");
-        m1.setUrl("https://ibb.co/dY7CTJ");
-        m1.setSummary("Pelicula de accion basada en lso Comics de Marvel");
-        movieList.add(m1);
-
-
-        //global.moviesInApp = movieList;
-        //this.movies = global.moviesInApp;
-
-        this.movies =  movieList;
+        //this.movies =  movieList;
         this.populateTable();
 
         //cambiar esto, para que cuando seleccione la pelicula, la seleccionada tome el ID y obtenga la pelicula que es
         //y cambie el currentMovie
-        global.currentMovie = m1;
+        //global.currentMovie = m1;
 
     }
 
@@ -246,6 +221,8 @@ public class MainActivity extends AppCompatActivity
 
         //set Movie
         this.setMovie(MovieId);
+
+
 
         detail_screen.putExtra("MovieId", String.valueOf(MovieId));
         startActivity(detail_screen);

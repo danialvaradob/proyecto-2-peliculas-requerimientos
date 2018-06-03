@@ -15,7 +15,13 @@ import android.widget.Switch;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import domain.Actor;
+import domain.Admin;
+import domain.Comment;
+import domain.Director;
+import domain.Genre;
 import domain.GlobalClass;
+import domain.Movie;
 import domain.RegularUser;
 
 public class LoginActivity extends Activity {
@@ -55,7 +61,9 @@ public class LoginActivity extends Activity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                String textOff, textOn;
+                textOff = (String) switchAdmin.getTextOff();
+                textOn = (String) switchAdmin.getTextOn();
                 validate(username.getText().toString(),password.getText().toString());
 
                 //Intent myIntent = new Intent(LoginActivity.this, MainActivity.class);
@@ -82,6 +90,40 @@ public class LoginActivity extends Activity {
         }
 
 
+        ////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////
+//Actors
+        Actor a1 = new Actor("Josh","Brollin");
+        Actor a2 = new Actor("Scarlett","Johansson");
+
+        ArrayList<Actor> actorsList = new ArrayList<>();
+        actorsList.add(a1);
+        actorsList.add(a2);
+
+        Director director = new Director("Joe","Russo");
+        Genre genre = new Genre("Action");
+
+        //Movie, just to show it on the table
+        //url movie 1 https://ibb.co/dY7CTJ
+        ArrayList<Movie> movieList = new ArrayList<>();
+        ArrayList<Comment> comments = new ArrayList<>();
+
+        //int id, String name, ArrayList<Actor> actorsList,
+        // Director director, int yearReleased,ArrayList<Comment> comments
+        Movie m1 = new Movie(2,"Avengers: Infinity War",actorsList,director,genre,2018,
+                comments,"https://ibb.co/dY7CTJ","Pelicula de accion basada en lso Comics de Marvel");
+        m1.setUrl("https://ibb.co/dY7CTJ");
+        m1.setSummary("Pelicula de accion basada en lso Comics de Marvel");
+        movieList.add(m1);
+
+        Admin a  = new Admin("admin1", "1234","Daniel", "Al");
+
+        global.moviesInApp = movieList;
+        ////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////
+
 
     }
     private void validate(String _username,String _password) {
@@ -92,21 +134,48 @@ public class LoginActivity extends Activity {
             LoginActivity.this.startActivity(intent);
         }
          */
-        if (searchUser(_username,_password)) {
+        //this.switchAdmin.
+
+        if (this.switchAdmin.isChecked()) {
+            if (this.adminLogin(_username,_password)) {
+                global.adminLogged = true;
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(LoginActivity.this);
+                // Setting Alert Dialog Title
+                alertDialogBuilder.setTitle("Message");
+                // Icon Of Alert Dialog
+                //alertDialogBuilder.setIcon(R.drawable.ic_menu_send);
+                // Setting Alert Dialog Message
+                alertDialogBuilder.setMessage("LOGIN ADMINISTRADOR");
+                alertDialogBuilder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        arg0.dismiss();
+                    }
+                });
+                alertDialogBuilder.show();
+                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                LoginActivity.this.startActivity(intent);
+            }
+
+        }
+
+        else if (searchUser(_username,_password)) {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(LoginActivity.this);
             // Setting Alert Dialog Title
             alertDialogBuilder.setTitle("Message");
             // Icon Of Alert Dialog
-            alertDialogBuilder.setIcon(R.drawable.ic_menu_send);
+            //alertDialogBuilder.setIcon(R.drawable.ic_menu_send);
             // Setting Alert Dialog Message
             alertDialogBuilder.setMessage("Login Successful!");
             alertDialogBuilder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
 
                 @Override
                 public void onClick(DialogInterface arg0, int arg1) {
-                    finish();
+                    arg0.dismiss();
                 }
             });
+            alertDialogBuilder.show();
             Intent intent = new Intent(LoginActivity.this,MainActivity.class);
             LoginActivity.this.startActivity(intent);
         } else {
@@ -121,17 +190,20 @@ public class LoginActivity extends Activity {
 
                 @Override
                 public void onClick(DialogInterface arg0, int arg1) {
-                    finish();
+                    arg0.dismiss();
                 }
             });
-            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-            LoginActivity.this.startActivity(intent);
+            alertDialogBuilder.show();
 
         }
+    }
 
-
-
-
+    private boolean adminLogin(String _username,String _password) {
+        Admin admin1 = global.admin;
+        if (admin1.getUsername().equals(_username) && admin1.getPassword().equals(_password)) {
+            return true;
+        }
+        return false;
     }
 
     private boolean searchUser(String _username,String _password) {

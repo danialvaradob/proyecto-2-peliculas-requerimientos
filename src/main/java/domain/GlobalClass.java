@@ -10,6 +10,7 @@ public class GlobalClass extends Application {
     public ArrayList<Movie> moviesInApp = new ArrayList<>();
     public Movie currentMovie;
     public ArrayList<RegularUser> users = new ArrayList<>();
+    public Admin admin;
 
 
 }

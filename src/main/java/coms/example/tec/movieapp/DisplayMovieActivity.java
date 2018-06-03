@@ -110,9 +110,10 @@ public class DisplayMovieActivity extends AppCompatActivity {
 
     }
 
-    private void setImage(View view) {
-        ImageView new_element = new ImageView(this);
-        new_element.setId(this.movieDisplayed.getId());
+    private void setImage() {
+        ImageView new_element = findViewById(R.id.movieImageView);
+        //new_element.setId(this.movieDisplayed.getId());
+
 
         new DownloadImageTask(new_element)
                 .execute(this.movieDisplayed.getPosterURL());

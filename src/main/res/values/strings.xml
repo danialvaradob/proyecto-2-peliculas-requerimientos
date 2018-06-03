@@ -25,4 +25,5 @@
     <string name="title_activity_register_user">RegisterUserActivity</string>
     <string name="title_activity_display_movie">DisplayMovieActivity</string>
     <string name="title_activity_fav_movies">FavMoviesActivity</string>
+    <string name="title_activity_add_movie">AddMovieActivity</string>
 </resources>

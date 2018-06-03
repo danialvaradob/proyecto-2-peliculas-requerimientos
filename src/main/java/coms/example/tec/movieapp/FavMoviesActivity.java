@@ -41,6 +41,8 @@ public class FavMoviesActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        populateTable();
     }
 
     private void populateTable(){
