@@ -1,8 +1,9 @@
 package domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class RegularUser extends User {
+public class RegularUser extends User implements Serializable {
 
     private ArrayList<Movie> favoriteMovies = new ArrayList<>();
     private String email;
@@ -30,6 +31,8 @@ public class RegularUser extends User {
     }
 
     public void blockUser() {this.blocked = true;}
+
+    public boolean isBlocked() {return this.blocked;}
 
     @Override
     public String toString() {

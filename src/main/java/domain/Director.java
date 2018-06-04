@@ -1,6 +1,8 @@
 package domain;
 
-public class Director {
+import java.io.Serializable;
+
+public class Director implements Serializable {
     private String name;
     private String lastname;
 

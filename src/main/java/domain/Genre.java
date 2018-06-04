@@ -1,6 +1,8 @@
 package domain;
 
-public class Genre {
+import java.io.Serializable;
+
+public class Genre implements Serializable {
     private String name;
 
     public Genre(String name) {

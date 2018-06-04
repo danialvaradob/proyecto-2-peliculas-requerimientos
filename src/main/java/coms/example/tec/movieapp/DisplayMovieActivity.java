@@ -23,6 +23,7 @@ import domain.Actor;
 import domain.GlobalClass;
 import domain.Movie;
 import util.DownloadImageTask;
+import util.FileHelper;
 
 public class DisplayMovieActivity extends AppCompatActivity {
 
@@ -81,6 +82,8 @@ public class DisplayMovieActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //add a movie to the favorites.
                 global.userLoggedIn.addMovie(movieDisplayed);
+                saveFavoriteMovie();
+
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(DisplayMovieActivity.this);
                 // Setting Alert Dialog Title
                 alertDialogBuilder.setTitle("FAVORITA");
@@ -144,6 +147,15 @@ public class DisplayMovieActivity extends AppCompatActivity {
         return new_element;
     }
 
+    private void saveFavoriteMovie() {
+        for (int i =0; i< global.users.size();i++) {
+            if (global.users.get(i).getUsername().equals(global.userLoggedIn.getUsername())) {
+                global.users.get(i).addMovie(movieDisplayed);
+            }
+        }
+        FileHelper fh = new FileHelper();
+        fh.saveUsers(global.users,DisplayMovieActivity.this);
 
+    }
 
 }

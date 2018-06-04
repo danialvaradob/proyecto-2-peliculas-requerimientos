@@ -1,8 +1,9 @@
 package domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Actor {
+public class Actor implements Serializable {
     protected String name;
     protected String lastName;
     protected ArrayList<Movie> moviesList = new ArrayList<>();

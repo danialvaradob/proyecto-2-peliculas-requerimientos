@@ -20,6 +20,7 @@ import domain.GlobalClass;
 import domain.RegularUser;
 import domain.User;
 import util.DatabaseHelper;
+import util.FileHelper;
 
 public class RegisterUserActivity extends Activity {
 
@@ -76,6 +77,12 @@ public class RegisterUserActivity extends Activity {
                     //global.userLoggedIn = u;
 
                 global.users.add(u);
+
+                //saves users
+                FileHelper fh = new FileHelper();
+                fh.saveUsers(global.users, RegisterUserActivity.this);
+
+
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(RegisterUserActivity.this);
                 // Setting Alert Dialog Title
                 alertDialogBuilder.setTitle("Message");
@@ -111,6 +118,8 @@ public class RegisterUserActivity extends Activity {
 
 
     }
+
+
 
 
 

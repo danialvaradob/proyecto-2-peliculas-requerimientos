@@ -1,6 +1,7 @@
 package util;
 
 
+import android.app.Activity;
 import android.os.Environment;
 
 import java.io.File;
@@ -17,8 +18,8 @@ import domain.RegularUser;
 
 public class FileHelper {
 
-    private static final String MOVIES_FILE_NAME = "moviesFile.txt";
-    private static final String USERS_FILE_NAME = "usersFile.dat";
+    private static final String MOVIES_FILE_NAME = "moviesdata.txt";
+    private static final String USERS_FILE_NAME = "usersdata.txt";
     private static final String PATH = Environment.getExternalStorageDirectory().getAbsolutePath();
 
 
@@ -28,61 +29,107 @@ public class FileHelper {
 
     public FileHelper() {};
 
-    public void saveMovies(ArrayList<Movie> _movies) {
+    public void saveMovies(ArrayList<Movie> _movies, Activity context) {
         try {
-            File file = new File(PATH + "/" + MOVIES_FILE_NAME);
-            file.mkdir();
-            FileOutputStream f = new FileOutputStream(file);
-            ObjectOutputStream o = new ObjectOutputStream(f);
+            FileOutputStream fos =
+                    new FileOutputStream(new File(context.getFilesDir(), MOVIES_FILE_NAME));
+            ObjectOutputStream oos =
+                    new ObjectOutputStream(fos);
 
-            o.writeObject(_movies);
-            o.close();
-            f.close();
+            oos.writeObject(_movies);
+            oos.close();
+            fos.close();
 
-        } catch (Exception e) {}
+        } catch (Exception e) {
+
+        }
 
     }
 
-    public static void saveUsers(ArrayList<RegularUser> _users) {
-        try {
-            FileOutputStream f = new FileOutputStream(new File(PATH + "/" + USERS_FILE_NAME));
-            ObjectOutputStream o = new ObjectOutputStream(f);
 
-            o.writeObject(_users);
-            o.close();
-            f.close();
+
+    public  void saveUsers(ArrayList<RegularUser> _users,Activity context) {
+        try {
+            FileOutputStream fos =
+                    new FileOutputStream(new File(context.getFilesDir(), USERS_FILE_NAME));
+            ObjectOutputStream oos =
+                    new ObjectOutputStream(fos);
+
+            oos.writeObject(_users);
+            oos.close();
+            fos.close();
+
 
         } catch (Exception e) {}
     }
 
-    public static ArrayList<Movie>loadMovies() {
+    public  ArrayList<Movie>loadMovies(Activity context) {
         ArrayList<Movie> movies= new ArrayList<>();
         try {
-            FileInputStream fi = new FileInputStream(new File(PATH + "/" + MOVIES_FILE_NAME));
-            ObjectInputStream oi = new ObjectInputStream(fi);
+            FileInputStream fos =
+                    new FileInputStream(new File(context.getFilesDir(), USERS_FILE_NAME));
+            ObjectInputStream oos =
+                    new ObjectInputStream(fos);
 
             // Read objects
-            movies = (ArrayList<Movie>) oi.readObject();
+            movies = (ArrayList<Movie>) oos.readObject();
 
-            oi.close();
-            fi.close();
+            oos.close();
+            fos.close();
 
 
         } catch (Exception e ) {}
         return movies;
 
     }
-    public static ArrayList<RegularUser>loadUsers() {
-        ArrayList<RegularUser> users= new ArrayList<>();
+
+    public  void addMovie(Movie _movie, Activity context) {
+        ArrayList<Movie> movies= new ArrayList<>();
         try {
-            FileInputStream fi = new FileInputStream(new File(PATH + "/" + USERS_FILE_NAME));
-            ObjectInputStream oi = new ObjectInputStream(fi);
+            FileInputStream fos =
+                    new FileInputStream(new File(context.getFilesDir(), MOVIES_FILE_NAME));
+            ObjectInputStream oos =
+                    new ObjectInputStream(fos);
 
             // Read objects
-            users = (ArrayList<RegularUser>) oi.readObject();
+            movies = (ArrayList<Movie>) oos.readObject();
 
-            oi.close();
-            fi.close();
+            oos.close();
+            fos.close();
+
+
+        } catch (Exception e ) {}
+        movies.add(_movie);
+        try {
+            FileOutputStream fos =
+                    new FileOutputStream(new File(context.getFilesDir(), MOVIES_FILE_NAME));
+            ObjectOutputStream oos =
+                    new ObjectOutputStream(fos);
+
+            oos.writeObject(movies);
+            oos.close();
+            fos.close();
+
+        } catch (Exception e) {}
+
+    }
+
+    public  ArrayList<RegularUser>loadUsers(Activity context) {
+        ArrayList<RegularUser> users= new ArrayList<>();
+        try {
+
+            FileInputStream fos =
+                    new FileInputStream(new File(context.getFilesDir(), USERS_FILE_NAME));
+            ObjectInputStream oos =
+                    new ObjectInputStream(fos);
+
+            // Read objects
+            users = (ArrayList<RegularUser>) oos.readObject();
+
+            oos.close();
+            fos.close();
+
+
 
 
         } catch (Exception e ) {}
