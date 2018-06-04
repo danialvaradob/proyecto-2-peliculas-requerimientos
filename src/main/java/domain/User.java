@@ -3,7 +3,7 @@ package domain;
 import java.util.ArrayList;
 
 public abstract class User {
-    private String id;
+    private int id;
     private String username;
     private String password;
     private String name;
@@ -16,7 +16,7 @@ public abstract class User {
         this.lastname = lastname;
     }
 
-    public String getId() {return this.id;};
+    public int getId() {return this.id;};
 
     public String getUsername() {
         return username;
@@ -49,6 +49,8 @@ public abstract class User {
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
+
+
 
 
 }

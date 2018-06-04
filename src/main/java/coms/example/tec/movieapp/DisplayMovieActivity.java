@@ -108,6 +108,7 @@ public class DisplayMovieActivity extends AppCompatActivity {
         director.setText(this.movieDisplayed.getDirector().toString());
         genre.setText(this.movieDisplayed.getGenre().getName());
         summary.setText(this.movieDisplayed.getSummary());
+        setImage();
 
     }
 

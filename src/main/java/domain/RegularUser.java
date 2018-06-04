@@ -6,6 +6,7 @@ public class RegularUser extends User {
 
     private ArrayList<Movie> favoriteMovies = new ArrayList<>();
     private String email;
+    private boolean blocked = false;
 
     public RegularUser(String name, String lastname,String email,String username, String password) {
         super(username, password, name, lastname);
@@ -27,6 +28,8 @@ public class RegularUser extends User {
         }
         return false;
     }
+
+    public void blockUser() {this.blocked = true;}
 
     @Override
     public String toString() {

@@ -136,8 +136,8 @@ public class LoginActivity extends Activity {
 
 
         ArrayList<Actor> actorsList2 = new ArrayList<>();
-        actorsList.add(a3);
-        actorsList.add(a4);
+        actorsList2.add(a3);
+        actorsList2.add(a4);
 
         Director director2 = new Director("Nick","Cassavetes");
         Genre genre2 = new Genre("Drama");

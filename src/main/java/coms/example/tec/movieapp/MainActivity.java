@@ -166,17 +166,21 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_startscren) {
             //Intent myIntent = new Intent(MainActivity.this, MainActivity.class);
             //MainActivity.this.startActivity(myIntent);\
-            Intent myIntent = new Intent(MainActivity.this, DisplayMovieActivity.class);
-            MainActivity.this.startActivity(myIntent);
         } else if (id == R.id.nav_blockusers) {
+            Intent myIntent = new Intent(MainActivity.this, UsersActivity.class);
+            MainActivity.this.startActivity(myIntent);
 
         } else if (id == R.id.nav_editmovies) {
+            Intent myIntent = new Intent(MainActivity.this, AddMovieActivity.class);
+            MainActivity.this.startActivity(myIntent);
 
         } else if (id == R.id.nav_favoritemovies) {
             Intent myIntent = new Intent(MainActivity.this, FavMoviesActivity.class);
             MainActivity.this.startActivity(myIntent);
 
         } else if (id == R.id.nav_recomendations) {
+            Intent myIntent = new Intent(MainActivity.this, RecomendationActivity.class);
+            MainActivity.this.startActivity(myIntent);
 
         }
 
@@ -282,7 +286,10 @@ public class MainActivity extends AppCompatActivity
                 strings.add(m.getGenre().getName().toLowerCase());
 
                 for (int j = 0; j < strings.size(); j++) {
-                    Boolean found = Arrays.asList(strings.get(i).split(" ")).contains(_criteria.toLowerCase().trim());
+                    String s1 = strings.get(j);
+                    //Boolean found = Arrays.asList(strings.get(i).split(" ")).contains(_criteria.toLowerCase().trim());
+                    s1 = s1.toLowerCase();
+                    Boolean found = (s1.indexOf(_criteria.toLowerCase()) != -1);
                     if(found){
                         moviesFound.add(m);
                     }

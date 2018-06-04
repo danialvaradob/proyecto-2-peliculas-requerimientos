@@ -26,4 +26,6 @@
     <string name="title_activity_display_movie">DisplayMovieActivity</string>
     <string name="title_activity_fav_movies">FavMoviesActivity</string>
     <string name="title_activity_add_movie">AddMovieActivity</string>
+    <string name="title_activity_recomendation">RecomendationActivity</string>
+    <string name="title_activity_users">UsersActivity</string>
 </resources>
