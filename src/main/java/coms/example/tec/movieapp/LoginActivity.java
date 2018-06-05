@@ -98,10 +98,12 @@ public class LoginActivity extends Activity {
         }
 
 
-        trash();
+        Admin a  = new Admin("admin1", "1234","Daniel", "Al");
+        global.admin = a;
+
+        //trash();
 
         loadSettings();
-
 
         ////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////
@@ -112,8 +114,7 @@ public class LoginActivity extends Activity {
 
 
     private void loadSettings() {
-        Admin a  = new Admin("admin1", "1234","Daniel", "Al");
-        global.admin = a;
+
 
         FileHelper fh = new FileHelper();
         global.moviesInApp = fh.loadMovies(LoginActivity.this);
@@ -155,6 +156,7 @@ public class LoginActivity extends Activity {
         }
 
         else if (searchUser(_username,_password)) {
+            global.adminLogged = false;
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(LoginActivity.this);
             // Setting Alert Dialog Title
             alertDialogBuilder.setTitle("Message");

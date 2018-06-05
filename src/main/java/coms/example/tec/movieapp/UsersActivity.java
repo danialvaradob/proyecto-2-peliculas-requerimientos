@@ -1,8 +1,10 @@
 package coms.example.tec.movieapp;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -83,6 +85,23 @@ public class UsersActivity extends AppCompatActivity implements View.OnClickList
         int UserId = (int)findViewById(view.getId()).getId();
 
         this.setBlocked(UserId);
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(UsersActivity.this);
+        // Setting Alert Dialog Title
+        alertDialogBuilder.setTitle("Message");
+        // Icon Of Alert Dialog
+        //alertDialogBuilder.setIcon(R.drawable.ic_menu_send);
+        // Setting Alert Dialog Message
+        alertDialogBuilder.setMessage("USUARIO BLOQUEADO");
+        alertDialogBuilder.setPositiveButton("Accept", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface arg0, int arg1) {
+                arg0.dismiss();
+            }
+        });
+        alertDialogBuilder.show();
+
 
     }
 

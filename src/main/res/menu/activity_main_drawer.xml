@@ -25,6 +25,11 @@
             android:id="@+id/nav_editmovies"
             android:icon="@drawable/ic_menu_manage"
             android:title="Administrar Películas" />
+        <item
+            android:id="@+id/nav_logout"
+
+            android:title="LOG OUT" />
+
 
     </group>
 

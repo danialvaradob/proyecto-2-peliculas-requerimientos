@@ -58,15 +58,15 @@ public class AddMovieActivity extends AppCompatActivity {
             }
         });
 
-        movieName = findViewById(R.id.movieNameTextEdit);
-        movieDirectorname = findViewById(R.id.nameDirTextEdit);
-        movieDirectorlastname = findViewById(R.id.lastnameDirTextEdit);
-        movieActorname = findViewById(R.id.actorNameTextEdit);
-        movieActorlastname = findViewById(R.id.actorLastnameTextEdit);
-        movieGenre = findViewById(R.id.genreTextEdit);
-        movieYear = findViewById(R.id.yearTextEdit);
-        movieSummary = findViewById(R.id.summaryTextEdit);
-        movieURL = findViewById(R.id.imgUrlTextEdit);
+        movieName = (EditText)findViewById(R.id.movieNameTextEdit);
+        movieDirectorname = (EditText)findViewById(R.id.nameDirTextEdit);
+        movieDirectorlastname = (EditText)findViewById(R.id.lastnameDirTextEdit);
+        movieActorname =(EditText) findViewById(R.id.actorNameTextEdit);
+        movieActorlastname = (EditText)findViewById(R.id.actorLastnameTextEdit);
+        movieGenre = (EditText)findViewById(R.id.genreTextEdit);
+        movieYear = (EditText) findViewById(R.id.yearTextEdit);
+        movieSummary = (EditText)findViewById(R.id.summaryTextEdit);
+        movieURL =(EditText) findViewById(R.id.imgUrlTextEdit);
 
         addActor = findViewById(R.id.addActorButton);
         addMovie = findViewById(R.id.addMovieButton);
@@ -89,11 +89,13 @@ public class AddMovieActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
+                String yearStr = movieYear.getText().toString();
+                int year = Integer.parseInt(yearStr);
 
                 int size = global.moviesInApp.size();
                 Movie m1 = new Movie(size+1,movieName.getText().toString(),actors,new Director(movieDirectorname.getText().toString(),movieDirectorlastname.getText().toString()),
-                        new Genre(movieGenre.getText().toString()),Integer.getInteger(movieYear.getText().toString()),
+                        new Genre(movieGenre.getText().toString()),
+                        year,
                         new ArrayList<Comment>(),movieURL.getText().toString(),movieSummary.getText().toString());
 
                 FileHelper fh = new FileHelper();

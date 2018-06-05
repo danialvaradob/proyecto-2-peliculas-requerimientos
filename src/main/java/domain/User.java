@@ -1,8 +1,9 @@
 package domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class User {
+public abstract class User implements Serializable {
     private int id;
     private String username;
     private String password;

@@ -67,7 +67,7 @@ public class FileHelper {
         ArrayList<Movie> movies= new ArrayList<>();
         try {
             FileInputStream fos =
-                    new FileInputStream(new File(context.getFilesDir(), USERS_FILE_NAME));
+                    new FileInputStream(new File(context.getFilesDir(), MOVIES_FILE_NAME));
             ObjectInputStream oos =
                     new ObjectInputStream(fos);
 

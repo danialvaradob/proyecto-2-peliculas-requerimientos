@@ -166,6 +166,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_startscren) {
             //Intent myIntent = new Intent(MainActivity.this, MainActivity.class);
             //MainActivity.this.startActivity(myIntent);\
+            populateTable(global.moviesInApp);
         } else if (id == R.id.nav_blockusers) {
             Intent myIntent = new Intent(MainActivity.this, UsersActivity.class);
             MainActivity.this.startActivity(myIntent);
@@ -182,6 +183,9 @@ public class MainActivity extends AppCompatActivity
             Intent myIntent = new Intent(MainActivity.this, RecomendationActivity.class);
             MainActivity.this.startActivity(myIntent);
 
+        } else if (id == R.id.nav_logout) {
+            Intent myIntent = new Intent(MainActivity.this, LoginActivity.class);
+            MainActivity.this.startActivity(myIntent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

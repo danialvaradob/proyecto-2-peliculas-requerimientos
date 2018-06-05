@@ -94,10 +94,12 @@ public class RecomendationActivity  extends AppCompatActivity implements View.On
 
     private ArrayList<Movie> recomendation (List<Movie> favs){
 
-        ArrayList<Movie> recomen = new ArrayList<Movie>();
+        ArrayList<Movie> recomen = new ArrayList<>();
         if (favs.size()==0){
             int i = 0;
             TextView new_element1 = null;
+            int limit = 10;
+
             while (i<10) {
                 int numero = (int) (Math.random() * global.moviesInApp.size()) + 1;
                 recomen.add(global.moviesInApp.get(numero));
@@ -106,13 +108,14 @@ public class RecomendationActivity  extends AppCompatActivity implements View.On
         }
         int i = 0;
         TextView new_element1 = null;
-        while (i<10){
+        while (i<favs.size()){
             int j=0;
             while(j< global.moviesInApp.size()) {
                 int numero = (int) (Math.random() * favs.size()) + 1;
-                if (favs.get(numero).getDirector().equals(global.moviesInApp.get(j).getDirector()) ||
-                        favs.get(numero).getGenre().equals(global.moviesInApp.get(j).getGenre()) ||
-                        favs.get(numero).getTags().equals(global.moviesInApp.get(j).getTags())){
+                //if (favs.size() == 1) numero = 0;
+                if (favs.get(numero-1).getDirector().equals(global.moviesInApp.get(j).getDirector()) ||
+                        favs.get(numero-1).getGenre().equals(global.moviesInApp.get(j).getGenre()) ||
+                        favs.get(numero-1).getTags().equals(global.moviesInApp.get(j).getTags())){
                     recomen.add(global.moviesInApp.get(j));
                 }
                 j++;
